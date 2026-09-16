@@ -2,90 +2,179 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Deadline Tracker</title>
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0">
+    
+        <title>Academic Deadline Tracker</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <!-- External CSS -->
     <link rel="stylesheet" href="academicdeadlinetracker.css">
+   
+    <!-- Bootstrap JavaScript -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <!-- External JavaScript -->
     <script src="academicdeadlinetracker.js" defer></script>
 </head>
-<body>
-    <h1>Academic Deadline Tracker</h1>
-    <p>Manage your assignments, projects, quizzes, and other academic deadlines.</p>
 
-    <hr>
+<body>
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                Academic Deadline Tracker
+            </a>
+
+            <!-- Burger Button -->
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Menu -->
+            <div class="collapse navbar-collapse"
+                 id="navbarMenu">
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#addTask">
+                            Add Academic Task
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#myTasks">
+                            My Academic Tasks
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+     <header class="hero-section text-center">
+        <div class="container">
+            <h1>Academic Deadline Tracker</h1>
+            <p>
+                Manage your assignments, projects, quizzes, and other academic deadlines.
+            </p>
+
+        </div>
+    </header>
+<br>
 
     <!-- Dashboard -->
-    <h2>Dashboard</h2>
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <h2>Dashboard</h2>
+            <div class="dashboard-cards">
+            <div class="card">
+                <h5>Total Tasks</h5>
+                <p id="totalTasks">0</p>
+            </div>
+            <div class="card">
+                <h5>Completed</h5>
+                <p id="completedTasks">0</p>
+            </div>
+            <div class="card">
+                <h5>Pending</h5>
+                <p id="pendingTasks">0</p>
+            </div>
+            <div class="card">
+                <h5>Overdue</h5>
+                <p id="overdueTasks">0</p>
+            </div>
+            </div>
+        </div>
+    </section>
 
-    <p id="totalTasks">Total Tasks: 0</p>
-    <p id="completedTasks">Completed: 0</p>
-    <p id="pendingTasks">Pending: 0</p>
-    <p id="overdueTasks">Overdue: 0</p>
 
-    <hr>
+
+    <br>
 
     <!-- Add Task Form -->
-    <h2>Add Academic Task</h2>
+    <section id="addTask" class="add-task-section py-4">
+    <div class="container">
+        <h2>Add Academic Task</h2>
+        <form id="taskForm" class="mt-3">
 
-    <form id="taskForm">
+        <label for="title">Task:</label>
+        <input type="text" id="title" name="title" placeholder="Enter task title" required>
 
-        <label for="title">Task Title:</label><br>
-        <input type="text" id="title" name="title"
-             placeholder="Enter task title" required><br><br>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
 
-        <label for="subject">Subject:</label><br>
-        <input type="text" id="subject" name="subject"
-             placeholder="Enter subject" required><br><br>
-
-        <label for="type">Task Type:</label><br>
+        <label for="type">Task Type:</label>
         <select id="type" name="type">
             <option value="assignment">Assignment</option>
             <option value="project">Project</option>
             <option value="quiz">Quiz</option>
             <option value="exam">Exam</option>
             <option value="presentation">Presentation</option>
-        </select><br><br>
+        </select>
 
-        <label for="deadline">Deadline:</label><br>
-        <input type="date" id="deadline" name="deadline" required><br><br>
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" name="deadline" required>
 
-        <label for="priority">Priority:</label><br>
+        <label for="priority">Priority:</label>
         <select id="priority" name="priority">
             <option value="high">High</option>
             <option value="medium">Medium</option>
             <option value="low">Low</option>
-        </select><br><br>
+        </select>
 
-        <label for="status">Status:</label><br>
+        <label for="status">Status:</label>
         <select id="status" name="status">
             <option value="pending">Pending</option>
             <option value="progress">In Progress</option>
             <option value="completed">Completed</option>
-        </select><br><br>
+        </select>
 
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description"
-                  placeholder="Enter task details"></textarea><br><br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" placeholder="Enter task details"></textarea>
 
         <div class="form-actions">
             <button type="submit" id="addTaskButton">Add Task</button>
             <button type="button" id="updateTaskButton" hidden>Update Task</button>
         </div>
+        </form>
+    </div>
+    </section>
 
-    </form>
+
 
     <hr>
 
     <!-- Task List -->
-    <div class="tasks-heading">
-        <h2>My Academic Tasks</h2>
-        <label for="sortTasks">Sort by:</label>
-        <select id="sortTasks">
-            <option value="default">Added order</option>
-            <option value="title">A-Z</option>
-            <option value="priority">Priority: High to Low</option>
-            <option value="deadline">Deadline: Soonest First</option>
-        </select>
-    </div>
+    <section id="myTasks" class="tasks-section">
+        <div class="container">
+            <h2>My Academic Tasks</h2>
+            <label for="sortTasks">Sort by:</label>
+            <select id="sortTasks">
+                <option value="default">Added order</option>
+                <option value="title">Task Title (A-Z)</option>
+                <option value="subject">Subject (A-Z)</option>
+                <option value="type">Task Type (A-Z)</option>
+                <option value="priority">Priority: High to Low</option>
+                <option value="deadline">Deadline: Soonest First</option>
+                <option value="status">Status (In Progress → Pending → Completed)</option>
+            </select>
+        </div>
+    </section>
 
     <table id="taskTable" border="1" cellpadding="8">
 
@@ -113,4 +202,4 @@
     <div id="message" role="status" aria-live="polite"></div>
 </body>
 </html>
-
+  
