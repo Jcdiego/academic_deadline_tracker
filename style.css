@@ -1,0 +1,35 @@
+body{
+    background-color: #900000;
+    display: flex;
+    margin-top: 60px;
+}
+.login-wrapper{
+    background-color: #ffD300;
+}
+.container{
+    display: flex;
+    background-color: #900000;
+    justify-content: center;
+    align-items: center;
+}
+.icon-tag{
+    font-size: 5rem;
+}
+.btn-maroon {
+    background-color: #900000; 
+    color: #fff;              
+    transition: background-color 0.3s ease; 
+}
+
+.btn-maroon:hover {
+    background-color: #600000;
+     color: #fff; 
+}
+
+.login-message {
+    margin: 0;
+    color: #600000;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
